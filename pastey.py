@@ -19,7 +19,7 @@ async def ping(ctx):
 
 @client.command(aliases=["purge", "c", "p"])
 async def clear(ctx, amount=10):
-    await ctx.channel.purge(limit=amount)
+    await ctx.channel.purge(limit=(amount+1))
 
 @client.command()
 async def start(ctx):
@@ -36,10 +36,20 @@ async def start(ctx):
             l = "http://pastebin.com/raw/"+link.split('/')[1][:-1]
             if l not in scraped_links:
                 try:
-                    await ctx.send(f"```{requests.get(l).text}```")
+                    await ctx.send(f"Paste: {l}\n```{requests.get(l).text}```")
                 except:
                     await ctx.send("Paste larger than 2000 characters (will fix in future)")
             scraped_links.append(l)
         while len(scraped_links) >= prune_limit:
             scraped_links = scraped_links[1:]
+        time.sleep(10)
+
+@client.command()
+async def bruh(ctx, amount=5):
+    if str(ctx.author) == "Theroumag#3356":
+        for x in range(amount):
+            await ctx.send(f"Goodnight man")
+    print(ctx.author)
+
+
 client.run(token)
