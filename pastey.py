@@ -13,7 +13,6 @@ async def on_ready():
     await client.change_presence(activity=discord.Activity(name="Protecting the campus enviorment"))
     client.help_command = commands.DefaultHelpCommand(no_category='Commands')
     tr=TorRequest(password=input("Unhashed Tor password: "))
-    r = tr.get("https://pastebin.com/archive")
     system("clear")
     print("Pastey Online")
 
