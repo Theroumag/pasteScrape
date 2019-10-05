@@ -142,7 +142,7 @@ def main() -> None:
 
       time.sleep(1)
 
-  with open("./token2.txt", "r") as f:
+  with open("./token.txt", "r") as f:
     token = f.read().strip()
 
   client.run(token)
